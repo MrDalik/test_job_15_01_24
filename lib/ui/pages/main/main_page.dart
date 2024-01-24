@@ -46,10 +46,6 @@ class MainPage extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        // TODO
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => Apartament(context),
-                        // ));
                       },
                       child: const Text(
                         'К выбору номера',
