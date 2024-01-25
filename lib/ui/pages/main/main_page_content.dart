@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_job_15_01_24/model/hotel_model.dart';
 import 'package:test_job_15_01_24/ui/widget/page_title.dart';
-import 'package:test_job_15_01_24/widget_%20library.dart';
+import 'package:test_job_15_01_24/widget_library.dart';
 
 class MainPageContent extends StatelessWidget {
   final HotelModel model;
@@ -30,7 +30,9 @@ class MainPageContent extends StatelessWidget {
                 const SizedBox(height: 15),
                 SizedBox(
                   height: imageContainerHeight,
-                  child: SliderImage(context),
+                  child: SliderImage(
+                    imageUrls: model.imageUrls,
+                  ),
                 ),
                 const SizedBox(height: 16),
                 HotelRating(context, 5),
@@ -98,7 +100,7 @@ class MainPageContent extends StatelessWidget {
               TextFormat(context, model.aboutTheHotel.description, 16, 19.2,
                   'SF Pro Display', const Color(0x90000000)),
               const SizedBox(height: 16),
-              HotelInformationFrame(context),
+              const HotelInformationFrame(),
               const SizedBox(height: 16),
             ],
           ),

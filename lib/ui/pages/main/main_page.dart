@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:test_job_15_01_24/cubit/base_state.dart';
 import 'package:test_job_15_01_24/cubit/main_cubit.dart';
 import 'package:test_job_15_01_24/data_source/rest_client.dart';
@@ -59,10 +58,6 @@ class MainPage extends StatelessWidget {
                     ),
                     const SizedBox(
                       height: 15,
-                    ),
-                    SvgPicture.asset('assets/icon/Home Indicator.svg'),
-                    const SizedBox(
-                      height: 8,
                     ),
                   ],
                 ),
