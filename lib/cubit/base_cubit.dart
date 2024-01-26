@@ -8,7 +8,7 @@ abstract class BaseCubit<T> extends Cubit<BaseState> {
   }
 
   Future<void> loadData() async {
-    if (state is! LoadingState) emit(const LoadingState());
+    if (state is! LoadingState) emit( const LoadingState());
     try {
       emit(ResultState<T>(await fetchData()));
     } catch (e) {

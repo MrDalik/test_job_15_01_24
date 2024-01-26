@@ -33,31 +33,29 @@ class SliderImage extends StatelessWidget {
 
 class TitlePage extends StatelessWidget {
   final String textRating;
+  final bool beakbutton;
 
-  const TitlePage(String text, {super.key, required this.textRating});
+  const TitlePage({
+    super.key,
+    required this.textRating,
+    this.beakbutton = false,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 24),
-      child: Row(
-        children: [
-          Image.asset(
-            'assets/icon/vector-3.png',
-          ),
-          Text(
-            textRating,
+    return Stack(children: [
+      if (beakbutton) const BackButton(),
+      Center(
+        child: Text(textRating,
             maxLines: 1,
             style: const TextStyle(
               fontFamily: 'SF Pro Display',
               fontWeight: FontWeight.w500,
               fontSize: 18,
-              height: 21.6 / 18, // в фигме Line height
-            ),
-          ),
-        ],
-      ),
-    );
+              height: 21.6 / 18,
+            )),
+      )
+    ]);
   }
 }
 
@@ -65,7 +63,7 @@ Widget HotelRating(BuildContext context, int rating) {
   return Container(
     padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
     decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5), color: const Color(0x20FFC700)),
+        borderRadius: BorderRadius.circular(5), color: const Color(0x33FFC700)),
     child: Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -183,3 +181,46 @@ Widget HotelInformation(BuildContext context, String text, String image) {
     ],
   );
 }
+class TravelButton extends StatelessWidget {
+  final String textbutton;
+
+  const TravelButton({super.key,required this.textbutton});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.white,
+      padding: const EdgeInsets.only(top: 12, left: 16, right: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: const Color(0xff0D72FF),
+              padding: const EdgeInsets.all(15.0),
+              textStyle: const TextStyle(fontSize: 20),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            onPressed: () {
+            },
+            child:  Text(
+              textbutton,
+              style: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                height: 17.6 / 16,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+        ],
+      ),
+    );
+  }
+}
+

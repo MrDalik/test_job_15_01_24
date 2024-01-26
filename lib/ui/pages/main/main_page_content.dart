@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:test_job_15_01_24/model/hotel_model.dart';
-import 'package:test_job_15_01_24/ui/widget/page_title.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
 
 class MainPageContent extends StatelessWidget {
@@ -26,7 +25,10 @@ class MainPageContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 15),
-                const Center(child: PageTitle(text: "Отель")),
+                TitlePage(
+                  textRating: 'Отель',
+                  beakbutton: true,
+                ),
                 const SizedBox(height: 15),
                 SizedBox(
                   height: imageContainerHeight,
@@ -40,15 +42,18 @@ class MainPageContent extends StatelessWidget {
                 TextFormat(context, 'Steigenberger Makadi', 22, 26.4,
                     'SF Pro Display', const Color(0xff000000)),
                 const SizedBox(height: 8),
-                TextButton(
-                  onPressed: () {},
-                  child: TextFormat(
-                      context,
-                      'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
-                      14,
-                      16.8,
-                      'SF Pro Display',
-                      Colors.blue),
+                GestureDetector(
+                  onTap: () {},
+                  child:
+                  const Text(
+                    'Madinat Makadi, Safaga Road, Makadi Bay, Египет',
+                    style: TextStyle(
+                        fontFamily: 'SF Pro Display',
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                        height: 16.8 / 14,
+                        color: Color(0xFF0D72FF)),
+                  ),
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -97,8 +102,15 @@ class MainPageContent extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 12),
-              TextFormat(context, model.aboutTheHotel.description, 16, 19.2,
-                  'SF Pro Display', const Color(0x90000000)),
+              Text(
+                model.aboutTheHotel.description,
+                style: const TextStyle(
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    height: 19.2 / 16,
+                    color: Color(0xE6000000)),
+              ),
               const SizedBox(height: 16),
               const HotelInformationFrame(),
               const SizedBox(height: 16),
@@ -110,3 +122,4 @@ class MainPageContent extends StatelessWidget {
     );
   }
 }
+
