@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SliderImage extends StatelessWidget {
+class SliderImage extends StatefulWidget {
   final List<String> imageUrls;
 
   const SliderImage({
@@ -10,21 +10,95 @@ class SliderImage extends StatelessWidget {
   });
 
   @override
+  State<SliderImage> createState() => _SliderImageState();
+}
+
+class _SliderImageState extends State<SliderImage> {
+  final control = PageController();
+  int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    control.addListener(setindex);
+  }
+
+  @override
+  void dispose() {
+    control.removeListener(setindex);
+    super.dispose();
+  }
+
+  void setindex() {
+    setState(() {
+      currentIndex = control.page?.round() ?? 0;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return PageView(
-      children: imageUrls
-          .map(
-            (imageUrl) => Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                image: DecorationImage(
-                  image: NetworkImage(imageUrl),
-                  fit: BoxFit.cover,
+    return Stack(alignment: AlignmentDirectional.bottomCenter, children: [
+      PageView(
+        controller: control,
+        children: widget.imageUrls
+            .map(
+              (imageUrl) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  image: DecorationImage(
+                    image: NetworkImage(imageUrl),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
+            )
+            .toList(),
+      ),
+      Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+              padding: const EdgeInsetsDirectional.symmetric(
+                  vertical: 5, horizontal: 10),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: const Color(0xFFFFFFFF)),
+              child: DotPage(
+                lenghtDot: widget.imageUrls.length,
+                currentIndex: currentIndex,
+              )),
+          const SizedBox(
+            height: 8,
           )
-          .toList(),
+        ],
+      )
+    ]);
+  }
+}
+
+class DotPage extends StatelessWidget {
+  final int lenghtDot;
+  final int currentIndex;
+
+  const DotPage(
+      {super.key, required this.lenghtDot, required this.currentIndex});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(
+        lenghtDot,
+        (index) => Container(
+          width: 7,
+          height: 7,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: currentIndex == index
+                  ? const Color(0xFF000000)
+                  : Colors.white),
+        ),
+      ),
     );
   }
 }
