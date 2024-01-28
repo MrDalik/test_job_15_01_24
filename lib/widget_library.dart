@@ -255,10 +255,11 @@ Widget HotelInformation(BuildContext context, String text, String image) {
     ],
   );
 }
+
 class TravelButton extends StatelessWidget {
   final String textbutton;
 
-  const TravelButton({super.key,required this.textbutton});
+  const TravelButton({super.key, required this.textbutton});
 
   @override
   Widget build(BuildContext context) {
@@ -277,9 +278,8 @@ class TravelButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
-            onPressed: () {
-            },
-            child:  Text(
+            onPressed: () {},
+            child: Text(
               textbutton,
               style: const TextStyle(
                 fontWeight: FontWeight.w500,
@@ -297,4 +297,3 @@ class TravelButton extends StatelessWidget {
     );
   }
 }
-
