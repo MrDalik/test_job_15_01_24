@@ -86,7 +86,7 @@ flutter:
   fonts:
     - family: SF Pro Display
       fonts:
-        - asset: assets/icon/fonts/SFProDisplay-UltralightItalic.ttf
+        - asset: assets/fonts/SF-Pro-Display-Bold.otf
           weight: 500
   #
   # For details regarding fonts from package dependencies,

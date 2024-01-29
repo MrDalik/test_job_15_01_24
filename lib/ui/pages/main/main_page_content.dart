@@ -12,23 +12,18 @@ class MainPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final imageContainerHeight = (screenSize.width - 16 * 2) / 343 * 257;
-    var format = NumberFormat.currency(symbol: "₽", customPattern: '000 000');
+    var format = NumberFormat.decimalPattern('ru_RU');
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: Colors.white,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+        StandartContener(
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 15),
                 const TitlePage(
-                  textRating: 'Отель',
+                  textRating: "Отель",
                   beakbutton: true,
                 ),
                 const SizedBox(height: 15),
@@ -39,7 +34,10 @@ class MainPageContent extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                HotelRating(context, 5),
+                HotelRating(
+                  rating: model.rating,
+                  ratingName: model.ratingName,
+                ),
                 const SizedBox(height: 8),
                 Text(
                   model.name,
@@ -48,8 +46,7 @@ class MainPageContent extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                       fontSize: 22,
                       height: 26.4 / 22,
-                      color: Color(0xff000000) // в фигме Line height
-                      ),
+                      color: Color(0xff000000)),
                 ),
                 const SizedBox(height: 8),
                 GestureDetector(
@@ -70,14 +67,13 @@ class MainPageContent extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'От ${format.format(model.minimalPrice)}',
+                      'от ${format.format(model.minimalPrice)} ₽',
                       style: const TextStyle(
                           fontFamily: 'SF Pro Display',
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
                           fontSize: 30,
                           height: 36 / 30,
-                          color: Color(0xff000000) // в фигме Line height
-                          ),
+                          color: Color(0xff000000)),
                     ),
                     const SizedBox(height: 8),
                     const SizedBox(
@@ -92,8 +88,7 @@ class MainPageContent extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             height: 19.2 / 16,
-                            color: Color(0XFF828796) // в фигме Line height
-                            ),
+                            color: Color(0XFF828796)),
                       ),
                     ),
                   ],
@@ -104,25 +99,19 @@ class MainPageContent extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            color: const Color(0xffFFFFFF),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+        StandartContener(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 16),
-              Text(
-                model.priceForIt,
-                style: const TextStyle(
+              const Text(
+                'Об отеле',
+                style: TextStyle(
                     fontFamily: 'SF Pro Display',
                     fontWeight: FontWeight.w500,
                     fontSize: 22,
                     height: 26.4 / 22,
-                    color: Color(0XFF000000) // в фигме Line height
-                    ),
+                    color: Color(0XFF000000)),
               ),
               const SizedBox(height: 16),
               Wrap(
@@ -131,7 +120,7 @@ class MainPageContent extends StatelessWidget {
                 children: List.generate(
                     model.aboutTheHotel.peculiarities.length,
                     (index) => HashtagFrame(
-                        context, model.aboutTheHotel.peculiarities[index])),
+                        text: model.aboutTheHotel.peculiarities[index])),
               ),
               const SizedBox(height: 12),
               Text(

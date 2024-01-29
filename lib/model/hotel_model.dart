@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'hotel_model.g.dart';
+
 @JsonSerializable()
 class HotelModel {
   @JsonKey(name: "id")
@@ -34,7 +35,8 @@ class HotelModel {
     required this.aboutTheHotel,
   });
 
-  factory HotelModel.fromJson(Map<String, dynamic> json) => _$HotelModelFromJson(json);
+  factory HotelModel.fromJson(Map<String, dynamic> json) =>
+      _$HotelModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$HotelModelToJson(this);
 }
@@ -51,7 +53,8 @@ class AboutTheHotel {
     required this.peculiarities,
   });
 
-  factory AboutTheHotel.fromJson(Map<String, dynamic> json) => _$AboutTheHotelFromJson(json);
+  factory AboutTheHotel.fromJson(Map<String, dynamic> json) =>
+      _$AboutTheHotelFromJson(json);
 
   Map<String, dynamic> toJson() => _$AboutTheHotelToJson(this);
 }

@@ -133,65 +133,69 @@ class TitlePage extends StatelessWidget {
   }
 }
 
-Widget HotelRating(BuildContext context, int rating) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5), color: const Color(0x33FFC700)),
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Image.asset(
-          'assets/icon/Star 22.png',
-          width: 15,
-          height: 15,
-        ),
-        const SizedBox(height: 2),
-        Text(
-          '$rating Превосходно',
-          maxLines: 1,
-          style: const TextStyle(
-              fontFamily: 'SF Pro Display',
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-              height: 19.2 / 16,
-              color: Color(0xFFFFA800)),
-        ),
-      ],
-    ),
-  );
+class HotelRating extends StatelessWidget {
+  final String ratingName;
+  final int rating;
+
+  const HotelRating(
+      {super.key, required this.rating, required this.ratingName});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: const Color(0x33FFC700)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            'assets/icon/Star 22.png',
+            width: 15,
+            height: 15,
+          ),
+          const SizedBox(height: 2),
+          Text(
+            '$rating $ratingName',
+            maxLines: 1,
+            style: const TextStyle(
+                fontFamily: 'SF Pro Display',
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                height: 19.2 / 16,
+                color: Color(0xFFFFA800)),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-Widget TextFormat(BuildContext context, String text, double size,
-    double lineHeight, String font, Color colorfont) {
-  return Text(
-    text,
-    style: TextStyle(
-        fontFamily: font,
-        fontWeight: FontWeight.w500,
-        fontSize: size,
-        height: lineHeight / size,
-        color: colorfont // в фигме Line height
-        ),
-  );
-}
+class HashtagFrame extends StatelessWidget {
+  final String text;
 
-Widget HashtagFrame(BuildContext context, String text) {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5), color: const Color(0xFFFBFBFC)),
-    child: Text(
-      text,
-      maxLines: 1,
-      style: const TextStyle(
-          fontFamily: 'SF Pro Display',
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          height: 19.2 / 16,
-          color: Color(0xFF828796)),
-    ),
-  );
+  const HashtagFrame({super.key, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: const Color(0xFFFBFBFC)),
+      child: Text(
+        text,
+        maxLines: 1,
+        style: const TextStyle(
+            fontFamily: 'SF Pro Display',
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            height: 19.2 / 16,
+            color: Color(0xFF828796)),
+      ),
+    );
+  }
 }
 
 class HotelInformationFrame extends StatelessWidget {
@@ -204,56 +208,74 @@ class HotelInformationFrame extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             color: const Color(0xFFFBFBFC)),
-        child: Column(
+        child: const Column(
           children: [
             HotelInformation(
-                context, "Удобства", 'assets/icon/emoji-happy.svg'),
-            const Padding(
+                text: "Удобства", image: 'assets/icon/emoji-happy.svg'),
+            Padding(
               padding: EdgeInsets.only(left: 53 - 15),
               child: Divider(
                 color: Color(0X15828796),
               ),
             ),
             HotelInformation(
-                context, "Что включено", 'assets/icon/tick-square.svg'),
-            const Padding(
+                text: "Что включено", image: 'assets/icon/tick-square.svg'),
+            Padding(
               padding: EdgeInsets.only(left: 53 - 15),
               child: Divider(
                 color: Color(0X15828796),
               ),
             ),
             HotelInformation(
-                context, "Что не включено", 'assets/icon/close-square.svg'),
+                text: "Что не включено", image: 'assets/icon/close-square.svg'),
           ],
         ));
   }
 }
 
-Widget HotelInformation(BuildContext context, String text, String image) {
-  return Row(
-    children: [
-      SvgPicture.asset(image),
-      const SizedBox(
-        width: 12,
-      ),
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextFormat(context, text, 16, 19.2, 'SF Pro Display',
-              const Color(0xFF2C3035)),
-          const SizedBox(
-            height: 2,
-          ),
-          TextFormat(context, 'Самое необходимое', 14, 16.8, 'SF Pro Display',
-              const Color(0xFF828796)),
-        ],
-      ),
-      const SizedBox(
-        width: 120,
-      ),
-      SvgPicture.asset('assets/icon/Icons.svg'),
-    ],
-  );
+class HotelInformation extends StatelessWidget {
+  final String text;
+  final String image;
+
+  const HotelInformation({super.key, required this.text, required this.image});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SvgPicture.asset(image),
+        const SizedBox(
+          width: 12,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(text,
+                style: const TextStyle(
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    height: 19.2 / 16,
+                    color: Color(0xFF2C3035))),
+            const SizedBox(
+              height: 2,
+            ),
+            const Text('Самое необходимое',
+                style: TextStyle(
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    height: 16.8 / 14,
+                    color: Color(0xFF828796))),
+          ],
+        ),
+        const SizedBox(
+          width: 120,
+        ),
+        SvgPicture.asset('assets/icon/Icons.svg'),
+      ],
+    );
+  }
 }
 
 class TravelButton extends StatelessWidget {
@@ -294,6 +316,24 @@ class TravelButton extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class StandartContener extends StatelessWidget {
+  final Widget child;
+
+  const StandartContener({super.key, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: child,
     );
   }
 }

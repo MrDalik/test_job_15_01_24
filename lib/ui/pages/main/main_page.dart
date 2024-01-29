@@ -7,7 +7,6 @@ import 'package:test_job_15_01_24/data_source/rest_client.dart';
 import 'package:test_job_15_01_24/ui/pages/main/main_page_content.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
 
-
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
@@ -31,7 +30,9 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const TravelButton(textbutton: "К выбору номера",),
+              const TravelButton(
+                textbutton: "К выбору номера",
+              ),
             ],
           ),
         ),
