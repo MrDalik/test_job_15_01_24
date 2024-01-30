@@ -280,8 +280,9 @@ class HotelInformation extends StatelessWidget {
 
 class TravelButton extends StatelessWidget {
   final String textbutton;
+  final Widget page;
 
-  const TravelButton({super.key, required this.textbutton});
+  const TravelButton({super.key, required this.textbutton, required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -300,7 +301,12 @@ class TravelButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => page),
+              );
+            },
             child: Text(
               textbutton,
               style: const TextStyle(
