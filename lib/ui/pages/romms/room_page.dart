@@ -13,23 +13,16 @@ class RoomPage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: const Color(0xffF6F6F9),
         body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: BlocProvider(
-                  create: (context) => RoomCubit(RestClient(Dio())),
-                  child: BlocBuilder<RoomCubit, BaseState>(
-                    builder: (context, state) => switch (state) {
-                      LoadingState() => const CircularProgressIndicator(),
-                      ErrorState(error: final error) => Text(error.toString()),
-                      ResultState(value: final value) =>
-                        RoomPageContent(model: value),
-                    },
-                  ),
-                ),
-              ),
-            ],
+          child: BlocProvider(
+            create: (context) => RoomCubit(RestClient(Dio())),
+            child: BlocBuilder<RoomCubit, BaseState>(
+              builder: (context, state) => switch (state) {
+                LoadingState() => const CircularProgressIndicator(),
+                ErrorState(error: final error) => Text(error.toString()),
+                ResultState(value: final value) =>
+                  RoomPageContent(model: value),
+              },
+            ),
           ),
         ),
       );

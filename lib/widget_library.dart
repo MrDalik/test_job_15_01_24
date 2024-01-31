@@ -37,42 +37,47 @@ class _SliderImageState extends State<SliderImage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(alignment: AlignmentDirectional.bottomCenter, children: [
-      PageView(
-        controller: control,
-        children: widget.imageUrls
-            .map(
-              (imageUrl) => Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  image: DecorationImage(
-                    image: NetworkImage(imageUrl),
-                    fit: BoxFit.cover,
+    final screenSize = MediaQuery.of(context).size;
+    final imageContainerHeight = (screenSize.width - 16 * 2) / 343 * 257;
+    return SizedBox(
+      height: imageContainerHeight,
+      child: Stack(alignment: AlignmentDirectional.bottomCenter, children: [
+        PageView(
+          controller: control,
+          children: widget.imageUrls
+              .map(
+                (imageUrl) => Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
+              )
+              .toList(),
+        ),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+                padding: const EdgeInsetsDirectional.symmetric(
+                    vertical: 5, horizontal: 10),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: const Color(0xFFFFFFFF)),
+                child: DotPage(
+                  lenghtDot: widget.imageUrls.length,
+                  currentIndex: currentIndex,
+                )),
+            const SizedBox(
+              height: 8,
             )
-            .toList(),
-      ),
-      Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-              padding: const EdgeInsetsDirectional.symmetric(
-                  vertical: 5, horizontal: 10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: const Color(0xFFFFFFFF)),
-              child: DotPage(
-                lenghtDot: widget.imageUrls.length,
-                currentIndex: currentIndex,
-              )),
-          const SizedBox(
-            height: 8,
-          )
-        ],
-      )
-    ]);
+          ],
+        )
+      ]),
+    );
   }
 }
 
@@ -106,21 +111,21 @@ class DotPage extends StatelessWidget {
 //SingleChildScrollView
 
 class TitlePage extends StatelessWidget {
-  final String textRating;
-  final bool beakbutton;
+  final String text;
+  final bool backButton;
 
   const TitlePage({
     super.key,
-    required this.textRating,
-    this.beakbutton = false,
+    required this.text,
+    this.backButton = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      if (beakbutton) const BackButton(),
+      if (backButton) const BackButton(),
       Center(
-        child: Text(textRating,
+        child: Text(text,
             maxLines: 1,
             style: const TextStyle(
               fontFamily: 'SF Pro Display',

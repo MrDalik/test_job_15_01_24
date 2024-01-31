@@ -10,8 +10,6 @@ class MainPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-    final imageContainerHeight = (screenSize.width - 16 * 2) / 343 * 257;
     var format = NumberFormat.decimalPattern('ru_RU');
     return SingleChildScrollView(
       child: Column(
@@ -24,15 +22,12 @@ class MainPageContent extends StatelessWidget {
                 children: [
                   const SizedBox(height: 15),
                   const TitlePage(
-                    textRating: "Отель",
-                    beakbutton: true,
+                    text: "Отель",
+                    backButton: false,
                   ),
                   const SizedBox(height: 15),
-                  SizedBox(
-                    height: imageContainerHeight,
-                    child: SliderImage(
-                      imageUrls: model.imageUrls,
-                    ),
+                  SliderImage(
+                    imageUrls: model.imageUrls,
                   ),
                   const SizedBox(height: 16),
                   HotelRating(
