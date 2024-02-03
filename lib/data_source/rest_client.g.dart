@@ -22,10 +22,10 @@ class _RestClient implements RestClient {
 
   @override
   Future<HotelModel> getHotel() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<HotelModel>(Options(
       method: 'GET',
@@ -49,10 +49,10 @@ class _RestClient implements RestClient {
 
   @override
   Future<RoomModel> getRooms() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<RoomModel>(Options(
       method: 'GET',
@@ -71,6 +71,33 @@ class _RestClient implements RestClient {
               baseUrl,
             ))));
     final value = RoomModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ReservationModel> getResevationInfo() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ReservationModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/63866c74-d593-432c-af8e-f279d1a8d2ff',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ReservationModel.fromJson(_result.data!);
     return value;
   }
 

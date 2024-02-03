@@ -7,7 +7,8 @@ import 'package:test_job_15_01_24/data_source/rest_client.dart';
 import 'package:test_job_15_01_24/ui/pages/romms/room_page_content.dart';
 
 class RoomPage extends StatelessWidget {
-  const RoomPage({super.key});
+  final String NamePage;
+  const RoomPage({super.key, required this.NamePage});
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -20,7 +21,7 @@ class RoomPage extends StatelessWidget {
                 LoadingState() => const CircularProgressIndicator(),
                 ErrorState(error: final error) => Text(error.toString()),
                 ResultState(value: final value) =>
-                  RoomPageContent(model: value),
+                  RoomPageContent(model: value, NamePage: NamePage,),
               },
             ),
           ),

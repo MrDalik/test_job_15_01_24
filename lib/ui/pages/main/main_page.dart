@@ -31,10 +31,6 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const TravelButton(
-                textbutton: "К выбору номера",
-                page: RoomPage(),
-              ),
             ],
           ),
         ),
