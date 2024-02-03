@@ -71,7 +71,9 @@ class MainPageContent extends StatelessWidget {
                             height: 36 / 30,
                             color: Color(0xff000000)),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(
+                        height: 8,
+                      ),
                       const SizedBox(
                         height: 14,
                       ),
@@ -99,7 +101,6 @@ class MainPageContent extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 16),
                 const Text(
                   'Об отеле',
                   style: TextStyle(

@@ -122,19 +122,22 @@ class TitlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      if (backButton) const BackButton(),
-      Center(
-        child: Text(text,
-            maxLines: 1,
-            style: const TextStyle(
-              fontFamily: 'SF Pro Display',
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
-              height: 21.6 / 18,
-            )),
-      )
-    ]);
+    return Container(
+      color: const Color(0xFFFFFFFF),
+      child: Stack(children: [
+        if (backButton) const BackButton(),
+        Center(
+          child: Text(text,
+              maxLines: 1,
+              style: const TextStyle(
+                fontFamily: 'SF Pro Display',
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+                height: 21.6 / 18,
+              )),
+        )
+      ]),
+    );
   }
 }
 
@@ -343,7 +346,7 @@ class StandartContener extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         color: Colors.white,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(16),
       child: child,
     );
   }

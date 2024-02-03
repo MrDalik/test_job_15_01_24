@@ -10,13 +10,13 @@ class RoomPageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var format = NumberFormat.decimalPattern('ru_RU');
     return SafeArea(
         child: Column(
       // mainAxisSize: MainAxisSize.min,
       children: [
         Container(
           padding: const EdgeInsets.only(top: 19, bottom: 16),
+          color: Colors.black,
           child: const TitlePage(
             text: 'Steigenberger Makadi',
           ),
@@ -39,9 +39,73 @@ class RoomPageContent extends StatelessWidget {
   }
 
   Widget itemBuilder(BuildContext context, int index) {
-    return StandartContener(
-        child: SliderImage(
-      imageUrls: model.rooms[index].imageUrls,
-    ));
+    var format = NumberFormat.decimalPattern('ru_RU');
+    return Column(
+      children: [
+        StandartContener(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SliderImage(
+                imageUrls: model.rooms[index].imageUrls,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(model.rooms[index].name,
+                  style: const TextStyle(
+                    fontFamily: 'SF Pro Display',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 22,
+                    height: 26.4 / 22,
+                  )),
+              const SizedBox(
+                height: 8,
+              ),
+              Wrap(
+                spacing: 8.0,
+                runSpacing: 8.0,
+                children: model.rooms[index].peculiarities
+                    .map((e) => HashtagFrame(text: e))
+                    .toList(),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    '${format.format(model.rooms[index].price)} ₽',
+                    style: const TextStyle(
+                        fontFamily: 'SF Pro Display',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 30,
+                        height: 36 / 30,
+                        color: Color(0xff000000)),
+                  ),
+                  const SizedBox(
+                    height: 26,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 14, left: 8),
+                    child: Text(
+                      model.rooms[index].pricePer,
+                      style: const TextStyle(
+                          fontFamily: 'SF Pro Display',
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          height: 19.2 / 16,
+                          color: Color(0XFF828796)),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const TravelButton(textbutton: "Выбрать номер", page: Text('1'))
+      ],
+    );
   }
 }
