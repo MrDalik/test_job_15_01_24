@@ -34,34 +34,7 @@ class MainPageContent extends StatelessWidget {
                         imageUrls: model.imageUrls,
                       ),
                       const SizedBox(height: 16),
-                      HotelRating(
-                        rating: model.rating,
-                        ratingName: model.ratingName,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        model.name,
-                        style: const TextStyle(
-                            fontFamily: 'SF Pro Display',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 22,
-                            height: 26.4 / 22,
-                            color: Color(0xff000000)),
-                      ),
-                      const SizedBox(height: 8),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          model.adress,
-                          style: const TextStyle(
-                            fontFamily: 'SF Pro Display',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            height: 16.8 / 14,
-                            color: Color(0xFF0D72FF),
-                          ),
-                        ),
-                      ),
+                      HotelBlock(rating: model.rating, ratingName: model.ratingName, name: model.name, adress: model.adress,),
                       const SizedBox(height: 16),
                       Row(
                         mainAxisSize: MainAxisSize.min,

@@ -377,3 +377,56 @@ class StandartContener extends StatelessWidget {
     );
   }
 }
+
+
+class HotelBlock extends StatelessWidget {
+  final int rating;
+
+  final String ratingName;
+
+  final String name;
+
+  final String adress;
+
+  const HotelBlock(
+      {super.key,
+        required this.rating,
+        required this.ratingName,
+        required this.name,
+        required this.adress});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      HotelRating(
+        rating: rating,
+        ratingName: ratingName,
+      ),
+      const SizedBox(height: 8),
+      Text(
+        name,
+        style: const TextStyle(
+            fontFamily: 'SF Pro Display',
+            fontWeight: FontWeight.w500,
+            fontSize: 22,
+            height: 26.4 / 22,
+            color: Color(0xff000000)),
+      ),
+      const SizedBox(height: 8),
+      GestureDetector(
+        onTap: () {},
+        child: Text(
+          adress,
+          style: const TextStyle(
+            fontFamily: 'SF Pro Display',
+            fontWeight: FontWeight.w500,
+            fontSize: 14,
+            height: 16.8 / 14,
+            color: Color(0xFF0D72FF),
+          ),
+        ),
+      ),
+    ]);
+  }
+}
+
