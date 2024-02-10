@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:test_job_15_01_24/model/reservation_model.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
 
 class ReservationBlock extends StatelessWidget {
-  final String departure;
-  final String arrivalcountry;
-  final String tourdatestart;
-  final String tourdatestop;
-  final int numberofnights;
-  final String room;
-  final String nutrition;
-  final String hotelname;
+  final ReservationModel model;
 
-  const ReservationBlock(
-      {super.key,
-      required this.departure,
-      required this.arrivalcountry,
-      required this.tourdatestart,
-      required this.tourdatestop,
-      required this.numberofnights,
-      required this.room,
-      required this.nutrition,
-      required this.hotelname});
+  const ReservationBlock({
+    super.key,
+    required this.model,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,49 +18,49 @@ class ReservationBlock extends StatelessWidget {
       children: [
         _ReservationBlockItem(
           nameitem: 'Вылет из',
-          textitem: departure,
+          textitem: model.departure,
         ),
         const SizedBox(
           height: 16,
         ),
         _ReservationBlockItem(
           nameitem: 'Страна, город',
-          textitem: arrivalcountry,
+          textitem: model.arrivalCountry,
         ),
         const SizedBox(
           height: 16,
         ),
         _ReservationBlockItem(
           nameitem: 'Даты',
-          textitem: '$tourdatestart – $tourdatestop',
+          textitem: '${model.tourDateStart} – ${model.tourDateStop}',
         ),
         const SizedBox(
           height: 16,
         ),
         _ReservationBlockItem(
           nameitem: 'Кол-во ночей',
-          textitem: '$numberofnights ночей',
+          textitem: '${model.numberOfNights} ночей',
         ),
         const SizedBox(
           height: 16,
         ),
         _ReservationBlockItem(
           nameitem: 'Отель',
-          textitem: hotelname,
+          textitem: model.hotelName,
         ),
         const SizedBox(
           height: 16,
         ),
         _ReservationBlockItem(
           nameitem: 'Номер',
-          textitem: room,
+          textitem: model.room,
         ),
         const SizedBox(
           height: 16,
         ),
         _ReservationBlockItem(
           nameitem: 'Питание',
-          textitem: nutrition,
+          textitem: model.nutrition,
         ),
       ],
     ));
@@ -83,8 +71,7 @@ class _ReservationBlockItem extends StatelessWidget {
   final String nameitem;
   final String textitem;
 
-  const _ReservationBlockItem(
-      {required this.nameitem, required this.textitem});
+  const _ReservationBlockItem({required this.nameitem, required this.textitem});
 
   @override
   Widget build(BuildContext context) {

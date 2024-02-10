@@ -13,7 +13,8 @@ class ReservationPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     var format = NumberFormat.decimalPattern('ru_RU');
     return Expanded(
-      child: SingleChildScrollView(padding: const EdgeInsets.only(top: 8),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -27,16 +28,7 @@ class ReservationPageContent extends StatelessWidget {
             const SizedBox(
               height: 8,
             ),
-            ReservationBlock(
-              departure: model.departure,
-              arrivalcountry: model.arrivalCountry,
-              tourdatestart: model.tourDateStart,
-              tourdatestop: model.tourDateStop,
-              numberofnights: model.numberOfNights,
-              room: model.room,
-              nutrition: model.nutrition,
-              hotelname: model.hotelName,
-            ),
+            ReservationBlock(model: model),
             const SizedBox(
               height: 8,
             ),

@@ -18,12 +18,7 @@ class RoomPage extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              Container(
-                color: Colors.white,
-                child: TitlePage(
-                  text: namePage,
-                ),
-              ),
+              TitlePage(text: namePage),
               Expanded(
                 child: BlocProvider(
                   create: (context) => RoomCubit(RestClient(Dio())),
