@@ -261,7 +261,10 @@ class _TextField extends StatelessWidget {
 
   final List<TextInputFormatter>? inputFormatters;
 
-  const _TextField({required this.label, this.inputFormatters});
+  const _TextField({
+    required this.label,
+    this.inputFormatters,
+  });
 
   @override
   Widget build(BuildContext context) {
