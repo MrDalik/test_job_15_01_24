@@ -18,15 +18,8 @@ class RoomPageContent extends StatelessWidget {
         child: Column(
       // mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          color: Colors.white,
-          child: TitlePage(
-            text: NamePage,
-          ),
-        ),
-        const SizedBox(height: 8),
         Expanded(
-          child: ListView.separated(
+          child: ListView.separated(padding: const EdgeInsets.only(top:8),
             itemCount: model.rooms.length,
             itemBuilder: itemBuilder,
             separatorBuilder: separatorBuilder,

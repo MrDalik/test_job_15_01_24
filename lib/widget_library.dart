@@ -132,6 +132,7 @@ class TitlePage extends StatelessWidget {
               children: [
                 const SizedBox(width: 23),
                 GestureDetector(
+    behavior: HitTestBehavior.translucent,
                   onTap: () => Navigator.pop(context),
                   child: Container(
                       padding: const EdgeInsets.all(5),
@@ -149,13 +150,17 @@ class TitlePage extends StatelessWidget {
               const SizedBox(
                 height: 19,
               ),
-              Text(text,
-                  style: const TextStyle(
-                    fontFamily: 'SF Pro Display',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                    height: 21.6 / 18,
-                  )),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 48+16),
+                child: Text(text,
+                    maxLines: 1,
+                    style: const TextStyle(
+                      fontFamily: 'SF Pro Display',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      height: 21.6 / 18,
+                    )),
+              ),
               const SizedBox(
                 height: 16,
               )
