@@ -122,19 +122,53 @@ class TitlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      if (backButton) const BackButton(),
-      Center(
-        child: Text(text,
-            maxLines: 1,
-            style: const TextStyle(
-              fontFamily: 'SF Pro Display',
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
-              height: 21.6 / 18,
-            )),
-      )
-    ]);
+    return Container(
+      color: const Color(0xFFFFFFFF),
+      child: Stack(children: [
+        if (backButton)
+          Column(children: [
+            const SizedBox(height: 19),
+            Row(
+              children: [
+                const SizedBox(width: 23),
+                GestureDetector(
+    behavior: HitTestBehavior.translucent,
+                  onTap: () => Navigator.pop(context),
+                  child: Container(
+                      padding: const EdgeInsets.all(5),
+                      child: SvgPicture.asset('assets/icon/vector-3.svg')),
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 16,
+            )
+          ]),
+        Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 19,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 48+16),
+                child: Text(text,
+                    maxLines: 1,
+                    style: const TextStyle(
+                      fontFamily: 'SF Pro Display',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      height: 21.6 / 18,
+                    )),
+              ),
+              const SizedBox(
+                height: 16,
+              )
+            ],
+          ),
+        )
+      ]),
+    );
   }
 }
 

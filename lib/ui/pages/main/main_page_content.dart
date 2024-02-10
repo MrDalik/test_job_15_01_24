@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_job_15_01_24/model/hotel_model.dart';
+import 'package:test_job_15_01_24/ui/pages/romms/room_page.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
 
 class MainPageContent extends StatelessWidget {
@@ -122,7 +123,7 @@ class MainPageContent extends StatelessWidget {
         ),),
          TravelButton(
           textbutton: "К выбору номера",
-          page: RoomPage(NamePage: model.name,),
+          page: RoomPage(namePage: model.name,),
         ),
       ],
     );
