@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
@@ -85,13 +84,13 @@ class _ReservationBlockItem extends StatelessWidget {
   final String textitem;
 
   const _ReservationBlockItem(
-      {super.key, required this.nameitem, required this.textitem});
+      {required this.nameitem, required this.textitem});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
+        SizedBox(
           width: 76 + 64,
           child: Text(
             nameitem,
@@ -189,11 +188,10 @@ class _PriseItem extends StatelessWidget {
   final String textitem;
   final int prise;
 
-  const _PriseItem({super.key, required this.textitem, required this.prise});
+  const _PriseItem({required this.textitem, required this.prise});
 
   @override
   Widget build(BuildContext context) {
-    var format = NumberFormat.decimalPattern('ru_RU');
     return Row(
       children: [
         Text(
@@ -205,7 +203,7 @@ class _PriseItem extends StatelessWidget {
               height: 19.2 / 16,
               color: Color(0xff828796)),
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           '$prise',
           style: const TextStyle(

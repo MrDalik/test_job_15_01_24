@@ -5,8 +5,6 @@ import 'package:test_job_15_01_24/cubit/base_state.dart';
 import 'package:test_job_15_01_24/cubit/main_cubit.dart';
 import 'package:test_job_15_01_24/data_source/rest_client.dart';
 import 'package:test_job_15_01_24/ui/pages/main/main_page_content.dart';
-import 'package:test_job_15_01_24/ui/pages/romms/room_page.dart';
-import 'package:test_job_15_01_24/widget_library.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});

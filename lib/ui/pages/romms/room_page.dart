@@ -8,9 +8,9 @@ import 'package:test_job_15_01_24/ui/pages/romms/room_page_content.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
 
 class RoomPage extends StatelessWidget {
-  final String NamePage;
+  final String namePage;
 
-  const RoomPage({super.key, required this.NamePage});
+  const RoomPage({super.key, required this.namePage});
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -21,7 +21,7 @@ class RoomPage extends StatelessWidget {
               Container(
                 color: Colors.white,
                 child: TitlePage(
-                  text: NamePage,
+                  text: namePage,
                 ),
               ),
               Expanded(
@@ -33,7 +33,6 @@ class RoomPage extends StatelessWidget {
                       ErrorState(error: final error) => Text(error.toString()),
                       ResultState(value: final value) => RoomPageContent(
                           model: value,
-                          NamePage: NamePage,
                         ),
                     },
                   ),

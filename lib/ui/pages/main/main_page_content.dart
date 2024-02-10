@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:test_job_15_01_24/model/hotel_model.dart';
+import 'package:test_job_15_01_24/ui/pages/romms/room_page.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
-
-import '../romms/room_page.dart';
 
 class MainPageContent extends StatelessWidget {
   final HotelModel model;
@@ -78,17 +77,18 @@ class MainPageContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Об отеле',
-                      style: TextStyle(
-                          fontFamily: 'SF Pro Display',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 22,
-                          height: 26.4 / 22,
-                          color: Color(0XFF000000)),
-                    ),
-                    const SizedBox(height: 16),
-                    Wrap(
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Об отеле',
+                        style: TextStyle(
+                            fontFamily: 'SF Pro Display',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22,
+                            height: 26.4 / 22,
+                            color: Color(0XFF000000)),
+                      ),
+                      const SizedBox(height: 16),
+                      Wrap(
                       spacing: 8.0,
                       runSpacing: 8.0,
                       children: model.aboutTheHotel.peculiarities
@@ -123,7 +123,7 @@ class MainPageContent extends StatelessWidget {
         ),),
          TravelButton(
           textbutton: "К выбору номера",
-          page: RoomPage(NamePage: model.name,),
+          page: RoomPage(namePage: model.name,),
         ),
       ],
     );
