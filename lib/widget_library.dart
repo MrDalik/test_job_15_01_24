@@ -132,7 +132,7 @@ class TitlePage extends StatelessWidget {
               children: [
                 const SizedBox(width: 23),
                 GestureDetector(
-    behavior: HitTestBehavior.translucent,
+                  behavior: HitTestBehavior.opaque,
                   onTap: () => Navigator.pop(context),
                   child: Container(
                       padding: const EdgeInsets.all(5),
@@ -151,7 +151,7 @@ class TitlePage extends StatelessWidget {
                 height: 19,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 48+16),
+                padding: const EdgeInsets.symmetric(horizontal: 48 + 16),
                 child: Text(text,
                     maxLines: 1,
                     style: const TextStyle(
@@ -383,7 +383,6 @@ class StandartContener extends StatelessWidget {
   }
 }
 
-
 class HotelBlock extends StatelessWidget {
   final int rating;
 
@@ -395,10 +394,10 @@ class HotelBlock extends StatelessWidget {
 
   const HotelBlock(
       {super.key,
-        required this.rating,
-        required this.ratingName,
-        required this.name,
-        required this.adress});
+      required this.rating,
+      required this.ratingName,
+      required this.name,
+      required this.adress});
 
   @override
   Widget build(BuildContext context) {
@@ -434,4 +433,3 @@ class HotelBlock extends StatelessWidget {
     ]);
   }
 }
-
