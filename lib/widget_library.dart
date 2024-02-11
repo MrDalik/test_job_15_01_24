@@ -365,10 +365,10 @@ class TravelButton extends StatelessWidget {
   }
 }
 
-class StandartContener extends StatelessWidget {
+class StandardContainer extends StatelessWidget {
   final Widget child;
 
-  const StandartContener({super.key, required this.child});
+  const StandardContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

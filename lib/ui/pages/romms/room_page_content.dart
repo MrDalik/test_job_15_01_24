@@ -41,7 +41,7 @@ class RoomPageContent extends StatelessWidget {
     var format = NumberFormat.decimalPattern('ru_RU');
     return Column(
       children: [
-        StandartContener(
+        StandardContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

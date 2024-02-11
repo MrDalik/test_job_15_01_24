@@ -21,7 +21,7 @@ class ReservationBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StandartContener(
+    return StandardContainer(
         child: Column(
       children: [
         _ReservationBlockItem(
@@ -126,7 +126,7 @@ class Prise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var format = NumberFormat.decimalPattern('ru_RU');
-    return StandartContener(
+    return StandardContainer(
       child: Column(
         children: [
           _PriseItem(
@@ -213,12 +213,12 @@ class _PriseItem extends StatelessWidget {
   }
 }
 
-class Regisration extends StatelessWidget {
-  const Regisration({super.key});
+class Registration extends StatelessWidget {
+  const Registration({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return StandartContener(
+    return StandardContainer(
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
