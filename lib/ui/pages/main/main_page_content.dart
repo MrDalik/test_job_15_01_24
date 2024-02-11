@@ -122,7 +122,7 @@ class MainPageContent extends StatelessWidget {
           ),
         ),),
          TravelButton(
-          textbutton: "К выбору номера",
+          textButton: "К выбору номера",
           page: RoomPage(namePage: model.name,),
         ),
       ],

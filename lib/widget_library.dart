@@ -318,10 +318,16 @@ class HotelInformation extends StatelessWidget {
 }
 
 class TravelButton extends StatelessWidget {
-  final String textbutton;
+  final String textButton;
   final Widget page;
+  final bool Function()? navigationPredicate;
 
-  const TravelButton({super.key, required this.textbutton, required this.page});
+  const TravelButton({
+    super.key,
+    required this.textButton,
+    required this.page,
+    this.navigationPredicate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -341,13 +347,15 @@ class TravelButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => page),
-              );
+              if (navigationPredicate?.call() ?? true) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => page),
+                );
+              }
             },
             child: Text(
-              textbutton,
+              textButton,
               style: const TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
@@ -377,7 +385,7 @@ class StandardContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         color: Colors.white,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(16),
       child: child,
     );
   }

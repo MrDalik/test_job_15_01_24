@@ -107,7 +107,7 @@ class RoomPageContent extends StatelessWidget {
             ],
           ),
         ),
-        const TravelButton(textbutton: "Выбрать номер", page: ReservationPage())
+        const TravelButton(textButton: "Выбрать номер", page: ReservationPage())
       ],
     );
   }
