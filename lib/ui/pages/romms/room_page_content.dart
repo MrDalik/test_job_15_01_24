@@ -41,7 +41,7 @@ class RoomPageContent extends StatelessWidget {
     var format = NumberFormat.decimalPattern('ru_RU');
     return Column(
       children: [
-        StandartContener(
+        StandardContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -107,7 +107,7 @@ class RoomPageContent extends StatelessWidget {
             ],
           ),
         ),
-        const TravelButton(textbutton: "Выбрать номер", page: ReservationPage())
+        const TravelButton(textButton: "Выбрать номер", page: ReservationPage())
       ],
     );
   }

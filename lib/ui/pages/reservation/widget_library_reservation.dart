@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:test_job_15_01_24/model/reservation_model.dart';
 import 'package:test_job_15_01_24/widget_library.dart';
-
-final _maskFormatter = MyMaskTextInputFormatter(
-  mask: '+# (###) ###-##-##',
-  filter: {"#": RegExp(r'[0-9]')},
-  type: MaskAutoCompletionType.lazy,
-);
 
 class ReservationBlock extends StatelessWidget {
   final ReservationModel model;
@@ -21,7 +13,7 @@ class ReservationBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StandartContener(
+    return StandardContainer(
         child: Column(
       children: [
         _ReservationBlockItem(
@@ -126,7 +118,7 @@ class Prise extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var format = NumberFormat.decimalPattern('ru_RU');
-    return StandartContener(
+    return StandardContainer(
       child: Column(
         children: [
           _PriseItem(
@@ -210,107 +202,5 @@ class _PriseItem extends StatelessWidget {
         ),
       ],
     );
-  }
-}
-
-class Regisration extends StatelessWidget {
-  const Regisration({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return StandartContener(
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Информация о покупателе',
-          style: TextStyle(
-              fontFamily: 'SF Pro Display',
-              fontWeight: FontWeight.w500,
-              fontSize: 22,
-              height: 26.4 / 22,
-              color: Color(0xff000000)),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        _TextField(
-          label: 'Номер телефона',
-          inputFormatters: [_maskFormatter],
-        ),
-        const SizedBox(height: 8),
-        const _TextField(label: 'Почта'),
-        const SizedBox(height: 8),
-        const Text(
-          'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту',
-          style: TextStyle(
-            fontFamily: 'SF Pro Display',
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
-            height: 16.8 / 14,
-            color: Color(0xff828796),
-          ),
-        ),
-      ],
-    ));
-  }
-}
-
-class _TextField extends StatelessWidget {
-  final String label;
-
-  final List<TextInputFormatter>? inputFormatters;
-
-  const _TextField({
-    required this.label,
-    this.inputFormatters,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      inputFormatters: inputFormatters,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        labelText: label,
-        fillColor: const Color(0xffF6F6F9),
-        filled: true,
-      ),
-    );
-  }
-}
-
-class MyMaskTextInputFormatter extends MaskTextInputFormatter {
-  MyMaskTextInputFormatter({
-    super.mask,
-    super.filter,
-    super.initialText,
-    super.type,
-  });
-
-  @override
-  TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue,
-    TextEditingValue newValue,
-  ) {
-    final text = newValue.text;
-
-    final TextEditingValue value;
-    if (text.length == 1 &&
-        text.startsWith(RegExp(r'\d')) &&
-        !newValue.text.startsWith('7')) {
-      if (newValue.text.startsWith('8')) {
-        value = newValue.copyWith(text: '7');
-      } else {
-        value = newValue.copyWith(text: '7${newValue.text}');
-      }
-    } else {
-      value = newValue;
-    }
-
-    return super.formatEditUpdate(oldValue, value);
   }
 }

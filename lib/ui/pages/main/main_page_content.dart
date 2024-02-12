@@ -18,7 +18,7 @@ class MainPageContent extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              StandartContener(
+              StandardContainer(
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +73,7 @@ class MainPageContent extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              StandartContener(
+              StandardContainer(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -122,7 +122,7 @@ class MainPageContent extends StatelessWidget {
           ),
         ),),
          TravelButton(
-          textbutton: "К выбору номера",
+          textButton: "К выбору номера",
           page: RoomPage(namePage: model.name,),
         ),
       ],
